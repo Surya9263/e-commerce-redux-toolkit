@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
-import { login, signup } from "../features/users/users.slice";
+import { useNavigate } from "react-router-dom";
+import { login } from "../features/users/users.slice";
 
 function Login() {
   const users = useSelector((store) => store.users);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log(users);
   let creds = {
     name: "",
     email: "",
@@ -36,10 +35,10 @@ function Login() {
           filtered[0]?.email == loginCreds.email &&
           filtered[0]?.password == loginCreds.password
         ) {
-            loginCreds.name=filtered[0]?.name
+          loginCreds.name = filtered[0]?.name;
           dispatch(login(loginCreds));
           setLoginCreds(creds);
-          navigate("/")
+          navigate("/");
         } else {
           alert("Incorrect email or password !!");
         }
@@ -64,7 +63,7 @@ function Login() {
         <input
           value={loginCreds.email}
           onChange={handleChange}
-          style={{ padding: "10px 55px", marginTop: "20px" }}
+          style={{ padding: "10px 70px", marginTop: "20px" }}
           name="email"
           type={"email"}
           placeholder="Enter your email"
@@ -73,7 +72,7 @@ function Login() {
         <input
           value={loginCreds.password}
           onChange={handleChange}
-          style={{ padding: "10px 55px", marginTop: "20px" }}
+          style={{ padding: "10px 70px", marginTop: "20px" }}
           name="password"
           type={"password"}
           placeholder="create password"

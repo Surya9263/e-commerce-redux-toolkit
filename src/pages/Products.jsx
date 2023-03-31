@@ -8,7 +8,6 @@ function Products() {
   const dispatch = useDispatch();
 
   let data = useSelector((store) => store.products);
-  console.log(data);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -17,7 +16,7 @@ function Products() {
   return (
     <div className="App">
       {products?.map((e) => (
-        <Product key={e.id} img={e.image} price={e.price} title={e.title} />
+        <Product key={e.id} id={e.id} img={e.image} price={e.price} title={e.title} />
       ))}
     </div>
   );
